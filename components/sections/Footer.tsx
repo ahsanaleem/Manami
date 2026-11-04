@@ -3,7 +3,7 @@
 import { motion, useInView } from "motion/react";
 import { useRef, type ReactNode } from "react";
 import { useT } from "@/components/global/Providers";
-import { Ghost } from "@/components/ui/Ghost";
+import { Logo } from "@/components/ui/Logo";
 import { spring } from "@/lib/tokens";
 
 // Replace the hrefs with the real profiles.
@@ -33,26 +33,26 @@ const SOCIALS: { name: string; href: string; icon: ReactNode }[] = [
 
 export function Footer() {
   const { footer } = useT();
-  // Watches the mask, because the ghost itself starts clipped and would never register as in view.
+  // Watches the mask, because the logo itself starts clipped and would never register as in view.
   const peek = useRef<HTMLDivElement>(null);
   const peeking = useInView(peek, { once: true });
   return (
     <footer className="relative border-t border-border bg-bg/60 px-[var(--gutter)] pt-10 pb-8 backdrop-blur-sm md:pt-14 md:pb-10">
-      {/* The ghost peeks over the top edge. The mask hides whatever is below the edge. */}
-      <div ref={peek} aria-hidden className="absolute end-[12%] bottom-full h-12 w-16 overflow-hidden">
+      {/* The logo peeks over the top edge. The mask hides whatever is below the edge. */}
+      <div ref={peek} aria-hidden className="absolute end-[12%] bottom-full h-9 w-24 overflow-hidden">
         <motion.div
           initial={{ y: "100%" }}
-          animate={{ y: peeking ? "22%" : "100%" }}
+          animate={{ y: peeking ? "12%" : "100%" }}
           transition={{ ...spring, delay: 0.25 }}
         >
-          <Ghost blink className="w-full" />
+          <Logo className="w-full" />
         </motion.div>
       </div>
 
       <div className="container-page flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-10">
         <div>
           <div className="flex items-center gap-2.5">
-            <Ghost className="w-7" />
+            <Logo className="w-12" />
             <span dir="ltr" className="text-xl font-extrabold tracking-tight">
               manami
             </span>

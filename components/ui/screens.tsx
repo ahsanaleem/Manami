@@ -52,10 +52,10 @@ export function StoryRow({ lead }: { lead?: React.ReactNode }) {
 export function HomeScreen() {
   const { screen } = useT();
   return (
-    <div className="flex h-full flex-col bg-gradient-to-b from-[#07130d] to-black">
+    <div className="flex h-full flex-col bg-gradient-to-b from-[#1a2147] to-bg">
       <StatusBar />
       <StoryRow />
-      <div className="relative mx-3 flex flex-1 flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_50%_38%,rgb(0_255_140/0.16),transparent_62%)]">
+      <div className="relative mx-3 flex flex-1 flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_50%_38%,rgb(174_168_233/0.2),transparent_62%)]">
         <p className="px-6 text-center text-xl leading-snug font-bold text-white">{screen.prompt}</p>
         {[
           { top: "14%", left: "18%" },
@@ -68,7 +68,7 @@ export function HomeScreen() {
       </div>
       <div className="mx-auto mt-4 flex rounded-full bg-white/8 p-1 text-xs font-semibold">
         {screen.tabs.map((tab, i) => (
-          <span key={tab} className={`rounded-full px-4 py-1.5 ${i === 1 ? "bg-accent text-black" : "text-white/70"}`}>
+          <span key={tab} className={`rounded-full px-4 py-1.5 ${i === 1 ? "bg-accent text-on-accent" : "text-white/70"}`}>
             {tab}
           </span>
         ))}

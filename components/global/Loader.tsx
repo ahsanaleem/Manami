@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Ghost } from "@/components/ui/Ghost";
+import { Logo } from "@/components/ui/Logo";
 import { timings } from "@/lib/tokens";
 import { useIntro, useT } from "./Providers";
 
@@ -55,7 +55,7 @@ export function Loader() {
     <div ref={ref} id="intro-loader">
       <div className="relative">
         <div className="loader-glow" aria-hidden />
-        <Ghost className="loader-ghost relative" />
+        <Logo className="loader-logo relative" />
       </div>
       <p aria-hidden className="loader-word mt-6 text-4xl font-extrabold tracking-tight text-text" dir="ltr">
         {[...loader.wordmark].map((c, i) => (

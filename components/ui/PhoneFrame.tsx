@@ -35,10 +35,10 @@ export function PhoneFrame({ children, screenshot, label, size = "lg", className
     >
       <div
         aria-hidden
-        className="absolute top-0 left-0 h-[620px] w-[300px] stay-dark phone-body origin-top-left rounded-[46px] border border-[#3a3a3a] bg-[#0a0a0a] p-[10px]"
+        className="absolute top-0 left-0 h-[620px] w-[300px] stay-dark phone-body origin-top-left rounded-[46px] border border-[#343c6b] bg-[#0c1028] p-[10px]"
         style={{ transform: "scale(var(--s))" }}
       >
-        <div className="relative h-full w-full overflow-hidden rounded-[36px] bg-black">
+        <div className="relative h-full w-full overflow-hidden rounded-[36px] bg-bg">
           {screenshot ? <Image src={screenshot} alt="" fill sizes="300px" className="object-cover" /> : children}
           <div className="absolute top-2.5 left-1/2 z-20 h-[26px] w-[86px] -translate-x-1/2 rounded-full bg-black ring-1 ring-white/5" />
         </div>

@@ -31,7 +31,7 @@ const THEME_WIPE_MS = 650;
 function applyTheme(next: Theme) {
   document.documentElement.dataset.theme = next;
   fx.lightTheme = next === "light";
-  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", next === "light" ? "#f7f8f4" : "#000000");
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", next === "light" ? "#f6f5fc" : "#0a0e24");
   window.dispatchEvent(new Event("manami:theme"));
 }
 
@@ -87,24 +87,12 @@ export function Providers({ children }: { children: ReactNode }) {
 
   const finishIntro = useCallback(() => setIntroDone(true), []);
 
-  // The boot script in layout.tsx has already picked the theme before first paint.
+  // The boot script in layout.tsx has already picked the theme before first paint: dark, unless the visitor chose light.
   const [theme, setTheme] = useState<Theme>("dark");
   useEffect(() => {
     const current: Theme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
     setTheme(current);
     applyTheme(current);
-    // Follow the device until the visitor makes their own choice.
-    const mq = window.matchMedia("(prefers-color-scheme: light)");
-    const onDevice = (e: MediaQueryListEvent) => {
-      try {
-        if (localStorage.getItem("manami-theme")) return;
-      } catch {}
-      const next: Theme = e.matches ? "light" : "dark";
-      setTheme(next);
-      applyTheme(next);
-    };
-    mq.addEventListener("change", onDevice);
-    return () => mq.removeEventListener("change", onDevice);
   }, []);
 
   const toggleTheme = useCallback<ThemeCtx["toggleTheme"]>((origin) => {

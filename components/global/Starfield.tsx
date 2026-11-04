@@ -53,7 +53,7 @@ export function Starfield() {
 
     const draw = (t: number) => {
       ctx.clearRect(0, 0, w, h);
-      const ink = fx.lightTheme ? "#1f3a2c" : "#fff";
+      const ink = fx.lightTheme ? "#1e2a5c" : "#fff";
       const dim = fx.lightTheme ? LIGHT_THEME_ALPHA : 1;
       ctx.fillStyle = ink;
       ctx.strokeStyle = ink;

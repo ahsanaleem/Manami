@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useFinePointer, useReduced } from "@/components/motion/hooks";
+import { LOGO_BODY, LOGO_PILLOW, LOGO_VIEWBOX } from "@/lib/logo";
 
 const RING_FOLLOW = 0.18; // lower means a lazier trail
 const INTERACTIVE = "a, button, [role='button'], summary, [data-cursor]";
@@ -51,7 +52,7 @@ export function Cursor() {
     const onOver = (e: PointerEvent) => {
       const el = (e.target as Element).closest?.(INTERACTIVE);
       r.classList.toggle("is-hover", !!el);
-      r.classList.toggle("is-ghost", el?.getAttribute("data-cursor") === "ghost");
+      r.classList.toggle("is-logo", el?.getAttribute("data-cursor") === "logo");
     };
     const onLeave = () => {
       seen = false;
@@ -76,10 +77,9 @@ export function Cursor() {
     <>
       <div ref={ring} className="cursor-ring" aria-hidden>
         <div className="cursor-ring-inner">
-          <svg viewBox="0 0 120 134" className="cursor-ghost" fill="#00FF8C">
-            <path d="M10 62a50 50 0 0 1 100 0v70l-16.7-17-16.6 17L60 115l-16.7 17-16.6-17L10 132z" />
-            <circle cx="42" cy="58" r="15" fill="#fff" />
-            <circle cx="78" cy="58" r="15" fill="#fff" />
+          <svg viewBox={LOGO_VIEWBOX} className="cursor-logo">
+            <path d={LOGO_PILLOW} fill="var(--logo-pillow)" fillRule="evenodd" />
+            <path d={LOGO_BODY} fill="var(--logo-body)" fillRule="evenodd" />
           </svg>
         </div>
       </div>

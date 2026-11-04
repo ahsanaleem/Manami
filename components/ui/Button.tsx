@@ -12,8 +12,8 @@ type ButtonProps = {
   variant?: "primary" | "secondary";
   shimmer?: boolean;
   className?: string;
-  /** Shows the ghost in the custom cursor. */
-  ghostCursor?: boolean;
+  /** Shows the logo in the custom cursor. */
+  logoCursor?: boolean;
   onClick?: () => void;
 };
 
@@ -23,9 +23,9 @@ const press = {
   transition: spring,
 };
 
-export function Button({ children, href, variant = "primary", shimmer, className = "", ghostCursor, onClick }: ButtonProps) {
+export function Button({ children, href, variant = "primary", shimmer, className = "", logoCursor, onClick }: ButtonProps) {
   const cls = `btn btn-${variant} ${shimmer ? "shimmer" : ""} ${className}`;
-  const cursor = ghostCursor ? { "data-cursor": "ghost" } : {};
+  const cursor = logoCursor ? { "data-cursor": "logo" } : {};
   if (href) {
     return (
       <motion.a href={href} className={cls} onClick={onClick} {...press} {...cursor}>
@@ -71,7 +71,7 @@ export function StoreButtons({ className = "" }: { className?: string }) {
           <Button
             href={s.href}
             variant={s.variant}
-            ghostCursor
+            logoCursor
             className="w-full !justify-center !gap-2 !px-2.5 min-[400px]:!gap-2.5 min-[400px]:!px-4 sm:w-auto sm:min-w-[184px] sm:!justify-start sm:!px-[22px]"
           >
             {s.icon}

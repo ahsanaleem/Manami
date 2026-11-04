@@ -9,7 +9,7 @@ import { LoopGate } from "@/components/motion/LoopGate";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { StoreButtons } from "@/components/ui/Button";
-import { Ghost } from "@/components/ui/Ghost";
+import { Logo } from "@/components/ui/Logo";
 import { fx } from "@/lib/fx";
 
 const STAR_BOOST = 1.7; // star brightness while this section is on screen
@@ -18,11 +18,11 @@ export function FinalCTA() {
   const { cta, a11y } = useT();
   const reduced = useReduced();
   const ref = useRef<HTMLElement>(null);
-  const ghostRef = useRef<HTMLDivElement>(null);
-  const awake = useInView(ghostRef, { amount: 0.75 });
+  const logoRef = useRef<HTMLDivElement>(null);
+  const awake = useInView(logoRef, { amount: 0.75 });
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center 60%"] });
-  // On a phone the headline sits right below the ghost, so a long rise would slide the ghost under it.
+  // On a phone the headline sits right below the logo, so a long rise would slide the logo under it.
   const [rise, setRise] = useState(320);
   useEffect(() => {
     const measure = () => setRise(window.innerWidth < 768 ? 90 : 320);
@@ -50,9 +50,9 @@ export function FinalCTA() {
     <section id="get-app" ref={ref} className="section relative flex items-center overflow-hidden md:min-h-svh">
       <LoopGate className="container-page relative flex flex-col items-center text-center">
         <GlowPulse className="top-0 left-1/2 size-[560px] -translate-x-1/2 -translate-y-1/4 md:size-[760px]" />
-        <motion.div ref={ghostRef} className="relative mb-6 w-28 md:mb-8 md:w-48" style={{ y, scale }}>
-          <div className={awake && !reduced ? "ghost-wiggle" : undefined}>
-            <Ghost eyesOpen={awake || reduced} blink={awake} follow hemWave title={a11y.mascot} className="w-full" />
+        <motion.div ref={logoRef} className="relative mb-6 w-44 md:mb-8 md:w-72" style={{ y, scale }}>
+          <div className={awake && !reduced ? "logo-sway" : undefined}>
+            <Logo breathe title={a11y.logo} className="w-full" />
           </div>
         </motion.div>
         <SplitText text={cta.headline} className="display relative max-w-[16ch] text-[clamp(2.1rem,9.6vw,3.5rem)] md:text-[clamp(2.5rem,7vw,5.5rem)]" />

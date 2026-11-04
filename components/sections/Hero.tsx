@@ -9,7 +9,7 @@ import { LoopGate } from "@/components/motion/LoopGate";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { StoreButtons } from "@/components/ui/Button";
-import { Ghost } from "@/components/ui/Ghost";
+import { Logo } from "@/components/ui/Logo";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
 import { HomeScreen } from "@/components/ui/screens";
 
@@ -39,10 +39,10 @@ export function Hero() {
     return () => window.removeEventListener("pointermove", onMove);
   }, [fine, reduced, rx, ry]);
 
-  // Scroll-out: the phone shrinks and the ghost flies on toward How it works.
+  // Scroll-out: the phone shrinks and the logo flies on toward How it works.
   const { scrollYProgress: out } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const still = reduced;
-  // On a phone a fixed sideways flight would carry the ghost off-screen, so it's limited by the screen's width.
+  // On a phone a fixed sideways flight would carry the logo off-screen, so it's limited by the screen's width.
   const [flyX, setFlyX] = useState(280);
   useEffect(() => {
     const measure = () => setFlyX(Math.min(280, window.innerWidth * 0.26));
@@ -53,11 +53,11 @@ export function Hero() {
   const phoneScale = useTransform(out, [0, 1], still ? [1, 1] : [1, 0.74]);
   const phoneY = useTransform(out, [0, 1], still ? [0, 0] : [0, 120]);
   const phoneOpacity = useTransform(out, [0.55, 1], still ? [1, 1] : [1, 0.25]);
-  const ghostX = useTransform(out, [0, 1], still ? [0, 0] : [0, -flyX * sign]);
-  const ghostY = useTransform(out, [0, 1], still ? [0, 0] : [0, 620]);
-  const ghostScale = useTransform(out, [0, 1], still ? [1, 1] : [1, 0.42]);
-  const ghostRotate = useTransform(out, [0, 1], still ? [0, 0] : [0, -24 * sign]);
-  const ghostOpacity = useTransform(out, [0.82, 1], still ? [1, 1] : [1, 0]);
+  const logoX = useTransform(out, [0, 1], still ? [0, 0] : [0, -flyX * sign]);
+  const logoY = useTransform(out, [0, 1], still ? [0, 0] : [0, 620]);
+  const logoScale = useTransform(out, [0, 1], still ? [1, 1] : [1, 0.42]);
+  const logoRotate = useTransform(out, [0, 1], still ? [0, 0] : [0, -24 * sign]);
+  const logoOpacity = useTransform(out, [0.82, 1], still ? [1, 1] : [1, 0]);
 
   return (
     <section ref={ref} className="relative overflow-x-clip px-[var(--gutter)] pt-24 pb-10 lg:flex lg:min-h-svh lg:items-center lg:pt-24 lg:pb-16">
@@ -88,7 +88,7 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <LoopGate className="relative flex justify-center pt-16 lg:pt-10">
+        <LoopGate className="relative flex justify-center pt-20 md:pt-24 lg:pt-12">
           <GlowPulse className="top-[10%] left-1/2 size-[520px] -translate-x-1/2 md:size-[640px]" />
           <motion.div
             className="relative"
@@ -104,13 +104,13 @@ export function Hero() {
             </motion.div>
           </motion.div>
           <motion.div
-            className="absolute -top-2 z-10 w-24 md:w-28 lg:-top-12"
-            style={{ x: ghostX, y: ghostY, scale: ghostScale, rotate: ghostRotate, opacity: ghostOpacity }}
+            className="absolute top-0 z-10 w-36 md:w-44 lg:-top-12"
+            style={{ x: logoX, y: logoY, scale: logoScale, rotate: logoRotate, opacity: logoOpacity }}
           >
-            <div className="ghost-bob relative">
-              {/* A blurred-looking gradient behind the ghost. A drop-shadow here would repaint with every hem frame. */}
-              <span aria-hidden className="absolute -inset-[35%] rounded-full bg-[radial-gradient(circle,rgb(0_255_140/0.4),transparent_66%)]" />
-              <Ghost follow blink hemWave title={a11y.mascot} className="relative w-full" />
+            <div className="logo-bob relative">
+              {/* A blurred-looking gradient behind the logo. A drop-shadow here would repaint with every breath. */}
+              <span aria-hidden className="absolute -inset-[35%] bg-[radial-gradient(closest-side,rgb(174_168_233/0.4),transparent)]" />
+              <Logo breathe title={a11y.logo} className="relative w-full" />
             </div>
           </motion.div>
         </LoopGate>

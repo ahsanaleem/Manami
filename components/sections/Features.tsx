@@ -46,7 +46,7 @@ function JournalVisual({ moods, accent }: { moods: string[]; accent: string }) {
   return (
     <div ref={ref} className="flex h-full flex-wrap content-center gap-2">
       {moods.map((m, i) => (
-        <span key={m} className={`relative rounded-full border border-line px-3 py-1.5 text-xs font-medium transition-colors duration-300 ${i === step ? "text-black" : "text-body"}`}>
+        <span key={m} className={`relative rounded-full border border-line px-3 py-1.5 text-xs font-medium transition-colors duration-300 ${i === step ? "text-white" : "text-body"}`}>
           {i === step && <motion.span layoutId="mood-pill" className="absolute inset-0 rounded-full" style={{ background: accent }} transition={spring} />}
           <span className="relative">{m}</span>
         </span>
@@ -72,8 +72,8 @@ function LockVisual({ accent }: { accent: string }) {
           className={`origin-[46px_32px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-[-6px] group-hover:rotate-[28deg] group-focus-within:rotate-[28deg] ${open ? "translate-y-[-6px] rotate-[28deg]" : ""}`}
         />
         <rect x="8" y="32" width="48" height="36" rx="9" fill={accent} />
-        <circle cx="32" cy="48" r="5" fill="#000" />
-        <rect x="30" y="50" width="4" height="9" rx="2" fill="#000" />
+        <circle cx="32" cy="48" r="5" fill="var(--color-on-accent)" />
+        <rect x="30" y="50" width="4" height="9" rx="2" fill="var(--color-on-accent)" />
       </svg>
     </div>
   );
@@ -122,7 +122,7 @@ function TagVisual() {
             animate={{ scale: i < step ? 1 : 0 }}
             transition={{ ...spring, delay: 0.15 }}
           >
-            <svg viewBox="0 0 12 12" className="size-2.5" fill="none" stroke="#000" strokeWidth="2.200" aria-hidden>
+            <svg viewBox="0 0 12 12" className="size-2.5" fill="none" stroke="var(--color-on-accent)" strokeWidth="2.200" aria-hidden>
               <path d="m2.500 6.200 2.400 2.400 4.600-5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </motion.span>
@@ -206,7 +206,7 @@ function PrivacyVisual({ options }: { options: string[] }) {
     <div ref={ref} className="flex h-full items-center justify-center">
       <div className="flex rounded-full border border-line bg-fill p-1 text-xs font-semibold lg:text-[11px]">
         {options.map((o, i) => (
-          <span key={o} className={`relative rounded-full px-2.5 py-1.5 whitespace-nowrap transition-colors duration-200 ${i === step ? "text-black" : "text-body"}`}>
+          <span key={o} className={`relative rounded-full px-2.5 py-1.5 whitespace-nowrap transition-colors duration-200 ${i === step ? "text-on-accent" : "text-body"}`}>
             {i === step && <motion.span layoutId="privacy-pill" className="absolute inset-0 rounded-full bg-accent" transition={spring} />}
             <span className="relative">{o}</span>
           </span>
@@ -308,10 +308,10 @@ export function Features() {
           <ul className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:mt-12 lg:grid-cols-4">
             <Feature index={0} className="col-span-2" accent={colors.accent} title={c.capture.title} body={c.capture.body} render={() => <CaptureVisual />} />
             <Feature index={1} className="col-span-2 sm:col-span-1" visualClass="h-[88px] sm:h-32" accent={colors.summary} title={c.journal.title} body={c.journal.body} render={() => <JournalVisual moods={c.journal.moods} accent={colors.summary} />} />
-            <Feature index={2} visualClass="h-[120px] sm:h-32" accent={colors.visualizeTo} title={c.eyes.title} body={c.eyes.body} render={() => <LockVisual accent={colors.visualizeTo} />} />
+            <Feature index={2} visualClass="h-[120px] sm:h-32" accent={colors.accent} title={c.eyes.title} body={c.eyes.body} render={() => <LockVisual accent="var(--color-accent)" />} />
             <Feature index={3} visualClass="h-[120px] sm:h-32" accent={colors.emotional} title={c.stories.title} body={c.stories.body} render={() => <StoriesVisual />} />
             <Feature index={4} className="col-span-2 sm:col-span-1" visualClass="h-16 sm:h-32" accent={colors.symbols} title={c.tag.title} body={c.tag.body} render={() => <TagVisual />} />
-            <Feature index={5} className="col-span-2" accent={colors.visualizeFrom} title={c.score.title} body={c.score.body} render={() => <ScoreVisual scoreLabel={c.score.scoreLabel} streakLabel={c.score.streakLabel} />} />
+            <Feature index={5} className="col-span-2" accent={colors.summary} title={c.score.title} body={c.score.body} render={() => <ScoreVisual scoreLabel={c.score.scoreLabel} streakLabel={c.score.streakLabel} />} />
             <Feature index={6} visualClass="h-[120px] sm:h-32" accent={colors.symbols} title={c.reminder.title} body={c.reminder.body} render={() => <ClockVisual />} />
             <Feature index={7} visualClass="h-[120px] sm:h-32" accent={colors.reflection} title={c.dictionary.title} body={c.dictionary.body} render={() => <DictionaryVisual />} />
             <Feature index={8} className="col-span-2 sm:col-span-1" visualClass="h-16 sm:h-32" accent={colors.accent} title={c.privacy.title} body={c.privacy.body} render={() => <PrivacyVisual options={c.privacy.options} />} />

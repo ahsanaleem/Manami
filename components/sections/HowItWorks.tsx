@@ -10,7 +10,7 @@ import { GlowPulse } from "@/components/motion/GlowPulse";
 import { useReduced } from "@/components/motion/hooks";
 import { LoopGate } from "@/components/motion/LoopGate";
 import { Reveal } from "@/components/motion/Reveal";
-import { Ghost } from "@/components/ui/Ghost";
+import { Logo } from "@/components/ui/Logo";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
 import { StatusBar, StoryRow } from "@/components/ui/screens";
 import { colors, spring } from "@/lib/tokens";
@@ -44,7 +44,7 @@ function Waveform({ playing }: { playing: boolean }) {
 function CaptureLayer({ playing, timer = "00:00" }: { playing: boolean; timer?: string }) {
   const { screen } = useT();
   return (
-    <div className="flex h-full flex-col items-center bg-gradient-to-b from-[#07130d] to-black">
+    <div className="flex h-full flex-col items-center bg-gradient-to-b from-[#1a2147] to-bg">
       <StatusBar />
       <p className="mt-16 text-sm font-medium text-white/70">{screen.recording}</p>
       <p dir="ltr" className="how-timer mt-2 text-5xl font-extrabold tabular-nums">
@@ -61,9 +61,9 @@ function CaptureLayer({ playing, timer = "00:00" }: { playing: boolean; timer?: 
               <span className="pulse-ring absolute inset-0 rounded-full border-2 border-accent [animation-delay:0.5s]" />
             </>
           )}
-          <svg viewBox="0 0 24 24" className="size-8" fill="#000" aria-hidden>
+          <svg viewBox="0 0 24 24" className="size-8" fill="var(--color-on-accent)" aria-hidden>
             <rect x="9" y="3" width="6" height="12" rx="3" />
-            <path d="M6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="#000" strokeWidth="2" strokeLinecap="round" />
+            <path d="M6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="var(--color-on-accent)" strokeWidth="2" strokeLinecap="round" />
           </svg>
         </span>
       </div>
@@ -74,7 +74,7 @@ function CaptureLayer({ playing, timer = "00:00" }: { playing: boolean; timer?: 
 function SkeletonLayer() {
   const { screen } = useT();
   return (
-    <div className="flex h-full flex-col bg-black px-5 pt-[120px]">
+    <div className="flex h-full flex-col bg-bg px-5 pt-[120px]">
       <p className="mb-5 text-center text-sm font-medium text-accent">{screen.aiReading}</p>
       <div className="rounded-3xl border border-white/10 p-5">
         <div className="skeleton mb-4 size-10 rounded-xl" />
@@ -91,7 +91,7 @@ function ReadingCard() {
   const { screen, reading } = useT();
   const dots = [colors.summary, colors.spiritual, colors.emotional, colors.symbols, colors.reflection];
   return (
-    <div className="relative w-[240px] rounded-3xl border border-white/15 bg-[#14091f] p-5 shadow-[0_0_50px_rgb(168_85_247/0.35)]">
+    <div className="relative w-[240px] rounded-3xl border border-white/15 bg-[#1a2147] p-5 shadow-[0_0_50px_rgb(174_168_233/0.3)]">
       <span className="text-3xl">🌙</span>
       <p className="mt-3 text-lg leading-tight font-bold text-white">{screen.readingTitle}</p>
       <p className="mt-2 text-[13px] leading-snug text-white/75">{screen.readingLine}</p>
@@ -116,7 +116,7 @@ function ReadingCard() {
 
 function ShareBubble() {
   return (
-    <span className="how-bubble grid size-11 place-items-center rounded-full bg-[#14091f] text-xl shadow-[0_0_0_2px_#000,0_0_0_4px_#00FF8C,0_0_22px_rgb(0_255_140/0.6)]">
+    <span className="how-bubble grid size-11 place-items-center rounded-full bg-[#1a2147] text-xl shadow-[0_0_0_2px_#0a0e24,0_0_0_4px_#AEA8E9,0_0_22px_rgb(174_168_233/0.6)]">
       🌙
     </span>
   );
@@ -125,7 +125,7 @@ function ShareBubble() {
 function ShareLayer() {
   const { screen } = useT();
   return (
-    <div className="flex h-full flex-col bg-gradient-to-b from-[#07130d] to-black">
+    <div className="flex h-full flex-col bg-gradient-to-b from-[#1a2147] to-bg">
       <StatusBar />
       <StoryRow lead={<ShareBubble />} />
       <div className="how-toast mt-auto mb-20 px-6 text-center">
@@ -150,7 +150,7 @@ function ReducedLayout() {
               <PhoneFrame label={a11y.phoneHow} size="sm">
                 {i === 0 && <CaptureLayer playing={false} timer="00:12" />}
                 {i === 1 && (
-                  <div className="grid h-full place-items-center bg-black">
+                  <div className="grid h-full place-items-center bg-bg">
                     <ReadingCard />
                   </div>
                 )}
@@ -245,13 +245,13 @@ function PinnedLayout() {
         <LoopGate className="container-page grid h-full grid-rows-[auto_minmax(0,1fr)] gap-3 md:h-auto md:grid-cols-[minmax(0,1fr)_auto] md:grid-rows-none md:items-center md:gap-10 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,0.3fr)] [@media(orientation:landscape)_and_(max-height:520px)]:h-auto [@media(orientation:landscape)_and_(max-height:520px)]:grid-cols-[minmax(0,1fr)_auto] [@media(orientation:landscape)_and_(max-height:520px)]:grid-rows-none [@media(orientation:landscape)_and_(max-height:520px)]:items-center">
           <div>
             <motion.div
-              className="mb-2 w-8 md:mb-5 md:w-12 [@media(max-height:720px)]:hidden"
+              className="mb-2 w-14 md:mb-5 md:w-20 [@media(max-height:720px)]:hidden"
               initial={{ scale: 0, rotate: -30 }}
               whileInView={{ scale: 1, rotate: 0 }}
               viewport={{ once: true }}
               transition={spring}
             >
-              <Ghost blink />
+              <Logo />
             </motion.div>
             <Reveal>
               <h2 className="display text-[clamp(1.4rem,6.6vw,3.25rem)] md:max-w-[16ch] md:text-[clamp(1.6rem,4.2vw,3.25rem)]">{how.title}</h2>
@@ -263,7 +263,7 @@ function PinnedLayout() {
                 <li key={step.title} className="relative ps-14 pb-8 last:pb-0">
                   <span
                     className={`absolute start-0 top-0 grid size-9 place-items-center rounded-full border text-sm font-semibold transition-colors duration-300 ${
-                      i <= active ? "border-accent bg-accent text-black" : "border-border text-body"
+                      i <= active ? "border-accent bg-accent text-on-accent" : "border-border text-body"
                     }`}
                   >
                     {i + 1}

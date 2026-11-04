@@ -153,7 +153,7 @@ export function ShieldParticles({ className = "" }: { className?: string }) {
             }}
           />
           <div ref={crisp} className="absolute inset-0 opacity-0">
-            <ShieldSvg className="h-full w-full drop-shadow-[0_0_30px_rgb(0_255_140/0.4)]" />
+            <ShieldSvg className="h-full w-full drop-shadow-[0_0_30px_rgb(174_168_233/0.4)]" />
           </div>
         </>
       )}

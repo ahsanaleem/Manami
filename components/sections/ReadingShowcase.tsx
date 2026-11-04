@@ -8,7 +8,7 @@ import { Magnetic } from "@/components/motion/Magnetic";
 import { useOnScreen, useReduced } from "@/components/motion/hooks";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
-import { Ghost } from "@/components/ui/Ghost";
+import { Logo } from "@/components/ui/Logo";
 import type { ReadingSlide, SlideId } from "@/lib/content";
 import { colors, durations, easeOutExpo, spring, timings } from "@/lib/tokens";
 
@@ -436,7 +436,7 @@ export function ReadingShowcase() {
             <Segments count={count} index={index} progress={progress} origin={dir === "rtl" ? "right center" : "left center"} />
 
             <div className="mt-4 flex items-center gap-3">
-              <Ghost className="w-7 shrink-0" />
+              <Logo className="w-12 shrink-0" />
               <div className="min-w-0 text-sm leading-tight">
                 <p className="font-semibold text-white">{reading.dreamTitle}</p>
                 <p className="text-white/70">{reading.dreamLabel}</p>

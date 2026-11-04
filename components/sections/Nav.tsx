@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/
 import { useEffect, useRef, useState } from "react";
 import { useLang, useT } from "@/components/global/Providers";
 import { Button } from "@/components/ui/Button";
-import { Ghost } from "@/components/ui/Ghost";
+import { Logo } from "@/components/ui/Logo";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { fx } from "@/lib/fx";
 import { languages } from "@/lib/i18n";
@@ -63,7 +63,7 @@ export function Nav() {
     <>
       <a
         href="#how"
-        className="sr-only z-[80] rounded-lg bg-accent px-4 py-2 font-semibold text-black focus:not-sr-only focus:fixed focus:start-4 focus:top-4"
+        className="sr-only z-[80] rounded-lg bg-accent px-4 py-2 font-semibold text-on-accent focus:not-sr-only focus:fixed focus:start-4 focus:top-4"
       >
         {a11y.skipToContent}
       </a>
@@ -76,7 +76,7 @@ export function Nav() {
       >
         <nav className="container-page flex items-center justify-between gap-4 px-[var(--gutter)] xl:px-0">
           <a href="#top" aria-label={nav.home} className="group flex min-h-11 items-center gap-2.5">
-            <Ghost blinkKey={scrolled} className="w-7 transition-transform duration-300 group-hover:-translate-y-0.5" />
+            <Logo nudgeKey={scrolled} className="w-12 transition-transform duration-300 group-hover:-translate-y-0.5" />
             <span dir="ltr" className="text-xl font-extrabold tracking-tight">
               manami
             </span>
@@ -93,7 +93,7 @@ export function Nav() {
           <div className="flex items-center gap-2">
             <LanguageSwitcher className="hidden sm:flex" />
             <ThemeToggle className="hidden sm:grid" />
-            <Button href={storeLinks.appStore} ghostCursor className="hidden !min-h-10 !px-3.5 !py-2 text-sm whitespace-nowrap min-[360px]:inline-flex sm:!px-[22px]">
+            <Button href={storeLinks.appStore} logoCursor className="hidden !min-h-10 !px-3.5 !py-2 text-sm whitespace-nowrap min-[360px]:inline-flex sm:!px-[22px]">
               {nav.cta}
             </Button>
             <button

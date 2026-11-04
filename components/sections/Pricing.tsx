@@ -131,7 +131,7 @@ export function Pricing() {
                             exit={{ scale: 0 }}
                             transition={{ ...spring, stiffness: 420, damping: 16 }}
                           >
-                            <Badge dir="ltr" className="!bg-black !px-1.5 !text-accent">{pricing.discount}</Badge>
+                            <Badge dir="ltr" className="!bg-on-accent !px-1.5 !text-accent">{pricing.discount}</Badge>
                           </motion.span>
                         )}
                       </AnimatePresence>
@@ -159,7 +159,7 @@ export function Pricing() {
                   <FreeFeature key={f.label} label={f.label} included={f.included} delay={0.15 + i * 0.1} />
                 ))}
               </ul>
-              <Button href={storeLinks.appStore} variant="secondary" ghostCursor className="mt-8 w-full">
+              <Button href={storeLinks.appStore} variant="secondary" logoCursor className="mt-8 w-full">
                 {pricing.free.cta}
               </Button>
             </div>
@@ -202,7 +202,7 @@ export function Pricing() {
                     ))}
                   </ul>
                   <Magnetic className="mt-8 block">
-                    <Button href={storeLinks.appStore} shimmer ghostCursor className="w-full">
+                    <Button href={storeLinks.appStore} shimmer logoCursor className="w-full">
                       {pricing.premium.cta}
                     </Button>
                   </Magnetic>

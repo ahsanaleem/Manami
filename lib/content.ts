@@ -25,7 +25,7 @@ export const content = {
     phoneHome: "Manami app capture screen with video, voice and text tabs and a row of friends' stories",
     phoneHow: "Manami app moving from recording a dream, to an AI reading, to sharing it as a story",
     phoneSocial: "Manami app showing a shared dream reel",
-    mascot: "Manami ghost mascot",
+    logo: "Manami logo",
     pauseStory: "Pause slideshow",
     playStory: "Play slideshow",
     prev: "Previous slide",

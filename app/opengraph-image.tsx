@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { LOGO_BODY, LOGO_LAVENDER, LOGO_PILLOW, LOGO_VIEWBOX } from "@/lib/logo";
 
 export const alt = "Manami: record, understand and share your dreams";
 export const size = { width: 1200, height: 630 };
@@ -11,25 +12,22 @@ export default function OpengraphImage() {
         width: "100%",
         height: "100%",
         display: "flex",
-        alignItems: "center",
-        gap: 72,
+        flexDirection: "column",
+        justifyContent: "center",
         padding: "0 96px",
-        background: "radial-gradient(circle at 24% 50%, #05402a 0%, #000 58%)",
+        background: "radial-gradient(circle at 80% 20%, #2d2f78 0%, #0A0E24 62%)",
         color: "#fff",
         fontFamily: "sans-serif",
       }}
     >
-      <svg width="280" height="312" viewBox="0 0 120 134">
-        <path fill="#00FF8C" d="M10 62a50 50 0 0 1 100 0v70l-16.7-17-16.6 17L60 115l-16.7 17-16.6-17L10 132z" />
-        <circle cx="42" cy="58" r="15" fill="#fff" />
-        <circle cx="78" cy="58" r="15" fill="#fff" />
-        <circle cx="42" cy="58" r="7" fill="#04140C" />
-        <circle cx="78" cy="58" r="7" fill="#04140C" />
-      </svg>
-      <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-        <div style={{ fontSize: 40, fontWeight: 700, color: "#00FF8C" }}>manami</div>
-        <div style={{ fontSize: 68, fontWeight: 800, lineHeight: 1.1, marginTop: 20 }}>Your dreams are trying to tell you something.</div>
+      <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+        <svg width="220" height="100" viewBox={LOGO_VIEWBOX}>
+          <path fill={LOGO_LAVENDER} fillRule="evenodd" d={LOGO_PILLOW} />
+          <path fill="#EBE9FB" fillRule="evenodd" d={LOGO_BODY} />
+        </svg>
+        <div style={{ fontSize: 56, fontWeight: 700, color: "#EBE9FB" }}>manami</div>
       </div>
+      <div style={{ fontSize: 72, fontWeight: 800, lineHeight: 1.1, marginTop: 44, maxWidth: 960 }}>Your dreams are trying to tell you something.</div>
     </div>,
     size,
   );

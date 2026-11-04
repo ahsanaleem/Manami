@@ -14,7 +14,7 @@ type TiltCardProps = {
   max?: number;
 };
 
-export function TiltCard({ children, className, accent = "#00FF8C", max = 7 }: TiltCardProps) {
+export function TiltCard({ children, className, accent = "#AEA8E9", max = 7 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const spot = useRef<HTMLDivElement>(null);
   const fine = useFinePointer();

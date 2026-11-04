@@ -4,7 +4,7 @@ type GlowPulseProps = {
 };
 
 /** Soft breathing radial glow. Position and size it with className. */
-export function GlowPulse({ color = "#00FF8C", className = "" }: GlowPulseProps) {
+export function GlowPulse({ color = "#AEA8E9", className = "" }: GlowPulseProps) {
   return (
     <div
       aria-hidden

@@ -1,20 +1,18 @@
 // Brand + motion tokens. Colours are mirrored as CSS variables in app/globals.css.
 export const colors = {
-  bg: "#000000",
-  surface: "#111111",
-  surface2: "#1A1A1A",
-  border: "#2A2A2A",
-  accent: "#00FF8C",
+  bg: "#0A0E24",
+  surface: "#121836",
+  surface2: "#1A2147",
+  border: "#2A3260",
+  accent: "#AEA8E9",
   text: "#FFFFFF",
-  body: "#9CA3AF",
-  muted: "#6B7280",
-  summary: "#A855F7",
-  spiritual: "#00FF8C",
+  body: "#AAB0CC",
+  muted: "#7B81A3",
+  summary: "#6C63D9",
+  spiritual: "#AEA8E9",
   emotional: "#EC4899",
   symbols: "#3B82F6",
   reflection: "#10B981",
-  visualizeFrom: "#FF6B6B",
-  visualizeTo: "#FF9A5A",
 } as const;
 
 // Shared easing and spring. Tweak these to change the feel of the whole page.
@@ -39,10 +37,10 @@ export const timings = {
 
 export const friends = [
   { name: "Aisha", emoji: "🌸", ring: "#EC4899" },
-  { name: "Yusuf", emoji: "🦁", ring: "#FF9A5A" },
-  { name: "Fatima", emoji: "🌙", ring: "#A855F7" },
+  { name: "Yusuf", emoji: "🦁", ring: "#7F8CFF" },
+  { name: "Fatima", emoji: "🌙", ring: "#6C63D9" },
   { name: "Omar", emoji: "🌊", ring: "#3B82F6" },
-  { name: "Sara", emoji: "🍃", ring: "#00FF8C" },
+  { name: "Sara", emoji: "🍃", ring: "#AEA8E9" },
 ] as const;
 
 export const storeLinks = {

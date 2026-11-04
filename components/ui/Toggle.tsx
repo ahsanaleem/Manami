@@ -26,7 +26,7 @@ export function Toggle<T extends string>({ options, value, onChange, label, clas
             aria-pressed={active}
             onClick={() => onChange(o.value)}
             className={`relative flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-semibold transition-colors duration-200 ${
-              active ? "text-black" : "text-body hover:text-text"
+              active ? "text-on-accent" : "text-body hover:text-text"
             }`}
           >
             {active && (

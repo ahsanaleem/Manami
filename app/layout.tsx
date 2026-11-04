@@ -48,13 +48,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#0a0e24",
   width: "device-width",
   initialScale: 1,
 };
 
 // Runs before first paint, so a returning visitor never sees the loader or the wrong direction.
-const bootScript = `try{var d=document.documentElement;var t=localStorage.getItem('manami-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;if(sessionStorage.getItem('manami-intro'))d.dataset.introSeen='1';else d.classList.add('intro-lock');var l=localStorage.getItem('manami-lang');if(l==='ar'||l==='fr'){d.lang=l;d.dir=l==='ar'?'rtl':'ltr';d.dataset.langPending='1'}}catch(e){}`;
+const bootScript = `try{var d=document.documentElement;var t=localStorage.getItem('manami-theme');if(t!=='light')t='dark';d.dataset.theme=t;if(sessionStorage.getItem('manami-intro'))d.dataset.introSeen='1';else d.classList.add('intro-lock');var l=localStorage.getItem('manami-lang');if(l==='ar'||l==='fr'){d.lang=l;d.dir=l==='ar'?'rtl':'ltr';d.dataset.langPending='1'}}catch(e){}`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

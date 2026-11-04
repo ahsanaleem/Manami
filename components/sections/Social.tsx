@@ -14,7 +14,7 @@ import { colors, friends } from "@/lib/tokens";
 
 const MARQUEE_TRAVEL = 1300; // px the reel row moves across the section's trip through the viewport
 const ORBIT_TIME = "46s";
-const REEL_ACCENTS = [colors.summary, colors.symbols, colors.reflection, colors.visualizeTo, colors.emotional, colors.accent];
+const REEL_ACCENTS = [colors.summary, colors.symbols, colors.reflection, colors.emotional, colors.spiritual];
 
 type Reel = { title: string; emoji: string; quote: string; by: string };
 
@@ -23,7 +23,7 @@ function ReelCard({ reel, accent, duplicate }: { reel: Reel; accent: string; dup
     <article
       aria-hidden={duplicate}
       className="stay-dark relative flex h-[320px] w-[240px] shrink-0 flex-col overflow-hidden rounded-[var(--radius-card)] border border-white/12 p-5 md:h-[360px] md:w-[270px]"
-      style={{ background: `linear-gradient(170deg, color-mix(in srgb, ${accent} 42%, #000), #0b0b0b 78%)` }}
+      style={{ background: `linear-gradient(170deg, color-mix(in srgb, ${accent} 42%, #0a0e24), #0a0e24 78%)` }}
     >
       <span className="text-5xl">{reel.emoji}</span>
       <h3 className="mt-auto text-lg leading-tight font-bold">{reel.title}</h3>
@@ -35,7 +35,7 @@ function ReelCard({ reel, accent, duplicate }: { reel: Reel; accent: string; dup
 
 function ReelScreen({ reel }: { reel: Reel }) {
   return (
-    <div className="flex h-full flex-col bg-gradient-to-b from-[#2a1650] via-[#120a22] to-black">
+    <div className="flex h-full flex-col bg-gradient-to-b from-[#2d2f78] via-[#1a2147] to-bg">
       <StatusBar />
       <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
         <span className="text-7xl">{reel.emoji}</span>
